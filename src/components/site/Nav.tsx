@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
+import logo from "@/assets/logo.png";
+
 
 const links = [
   { label: "About", href: "#about" },
@@ -31,12 +33,10 @@ export function Nav() {
             scrolled ? "glass-card" : "border border-transparent"
           }`}
         >
-          <a
-            href="#top"
-            className="font-display text-sm font-semibold tracking-[0.18em] uppercase"
-          >
-            Mir<span className="text-primary">.</span>Murtaza
-          </a>
+          <a href="/" className="flex items-center gap-4 text-lg font-bold tracking-widest">
+  <img src={logo} alt="Logo" className="h-20 w-20 object-contain" />
+  MIR<span className="text-muted-foreground">.</span>MURTAZA
+</a>
 
           <nav className="hidden items-center gap-8 md:flex">
             {links.map((link) => (

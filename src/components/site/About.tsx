@@ -34,8 +34,7 @@ export function About() {
           </Reveal>
           <Reveal delay={0.12}>
             <p>
-              Every website is crafted with clean design, fast performance,
-              mobile responsiveness, and a strong user experience.
+            I specialize in designing and developing modern websites that help local & international businesses establish a strong online presence. My focus goes beyond creating attractive designs. I build websites that are fast, responsive, and easy to navigate, ensuring every visitor has a seamless experience. From thoughtful layouts to clean branding, every detail is crafted with purpose. I believe a professional website is one of the most valuable investments a business can make, helping it build trust, stand out from competitors, and convert visitors into loyal customers. My goal is simple: create digital experiences that look premium, perform exceptionally, and support real business growth.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
