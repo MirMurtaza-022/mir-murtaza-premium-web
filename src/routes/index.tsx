@@ -1,24 +1,60 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Toaster } from "@/components/ui/sonner";
+import { Nav } from "@/components/site/Nav";
+import { Hero } from "@/components/site/Hero";
+import { About } from "@/components/site/About";
+import { WhyChooseMe } from "@/components/site/WhyChooseMe";
+import { Portfolio } from "@/components/site/Portfolio";
+import { Process } from "@/components/site/Process";
+import { TechStack } from "@/components/site/TechStack";
+import { Services } from "@/components/site/Services";
+import { Stats } from "@/components/site/Stats";
+import { Contact } from "@/components/site/Contact";
+import { Footer } from "@/components/site/Footer";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Mir Murtaza — Websites That Grow Local Businesses" },
+      {
+        name: "description",
+        content:
+          "Premium web design for local businesses: modern, fast, mobile-ready websites that build trust and bring in more customers.",
+      },
+      {
+        property: "og:title",
+        content: "Mir Murtaza — Websites That Grow Local Businesses",
+      },
+      {
+        property: "og:description",
+        content:
+          "Premium web design for local businesses: modern, fast, mobile-ready websites that build trust and bring in more customers.",
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="relative min-h-screen overflow-x-hidden">
+      <Nav />
+      <main>
+        <h1 className="sr-only">
+          Mir Murtaza — premium web design for local businesses
+        </h1>
+        <Hero />
+        <About />
+        <WhyChooseMe />
+        <Portfolio />
+        <Process />
+        <TechStack />
+        <Services />
+        <Stats />
+        <Contact />
+      </main>
+      <Footer />
+      <Toaster />
     </div>
   );
 }
