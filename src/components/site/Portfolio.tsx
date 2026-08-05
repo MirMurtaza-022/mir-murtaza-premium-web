@@ -48,7 +48,7 @@ export function Portfolio() {
 
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-90"
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background from-15% via-background/75 to-transparent"
                 />
 
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-7">
