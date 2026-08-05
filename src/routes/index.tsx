@@ -40,10 +40,8 @@ function Index() {
     <div className="relative min-h-screen overflow-x-hidden">
       <Nav />
       <main>
-        <h1 className="sr-only">
-          Mir Murtaza — premium web design for local businesses
-        </h1>
-        <Hero />
+      <Hero />
+
         <About />
         <WhyChooseMe />
         <Portfolio />
