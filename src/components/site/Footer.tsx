@@ -1,4 +1,4 @@
-import { Github, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Github, Instagram, Linkedin } from "lucide-react";
 
 const nav = [
   { label: "About", href: "#about" },
@@ -9,10 +9,10 @@ const nav = [
 ];
 
 const socials = [
-  { label: "GitHub", icon: Github, href: "#" },
-  { label: "LinkedIn", icon: Linkedin, href: "#" },
-  { label: "Instagram", icon: Instagram, href: "#" },
-  { label: "X", icon: Twitter, href: "#" },
+  { label: "GitHub", icon: Github, href: "https://github.com/MirMurtaza-022" },
+  { label: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/mir-murtaza-7148b3404" },
+  { label: "Instagram", icon: Instagram, href: "https://www.instagram.com/mirmurtaza072" },
+ /* { label: "X", icon: Twitter, href: "#" } */,
 ];
 
 export function Footer() {
