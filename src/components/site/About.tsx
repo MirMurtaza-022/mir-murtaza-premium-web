@@ -1,17 +1,29 @@
 import { Reveal, SectionHeading } from "./motion-primitives";
+import profilePic from "@/assets/profile.jpg";
 
 export function About() {
   return (
     <section id="about" className="py-28">
       <div className="section-shell grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
-        <SectionHeading
-          eyebrow="About"
-          title={
-            <>
-              Who <span className="text-gradient">I Am</span>
-            </>
-          }
-        />
+        <div className="flex flex-col gap-8">
+          <SectionHeading
+            eyebrow="About"
+            title={
+              <>
+                Who <span className="text-gradient">I Am</span>
+              </>
+            }
+          />
+
+          <div className="relative w-full max-w-md aspect-square shrink-0 animate-float mx-auto lg:mx-0">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-purple-500 via-blue-500 to-purple-500 animate-spin-slow blur-sm opacity-70"></div>
+            <img
+              src={profilePic}
+              alt="Your Name"
+              className="relative w-full h-full rounded-3xl object-cover border-4 border-background hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+        </div>
 
         <div className="space-y-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
           <Reveal delay={0.05}>
