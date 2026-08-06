@@ -7,10 +7,7 @@ const stack = [
   "JavaScript",
   "React",
   "Tailwind CSS",
-  "Vite",
-  "GitHub",
-  "Vercel",
-  "Lovable",
+  "Vite"
 ];
 
 export function TechStack() {
@@ -22,7 +19,7 @@ export function TechStack() {
           align="center"
           title={
             <>
-              Modern tools, <span className="text-gradient">solid builds</span>
+              Built With Modern <span className="text-gradient">Technologies</span>
             </>
           }
         />

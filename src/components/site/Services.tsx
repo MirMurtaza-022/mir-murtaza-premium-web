@@ -37,7 +37,7 @@ export function Services() {
           eyebrow="Services"
           title={
             <>
-              What I <span className="text-gradient">deliver</span>
+              What I <span className="text-gradient">Deliver</span>
             </>
           }
         />
