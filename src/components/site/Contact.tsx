@@ -9,6 +9,27 @@ const fields = [
   { name: "phone", label: "Phone", type: "tel", placeholder: "+1 000 000 0000" },
 ];
 
+const WHATSAPP_NUMBER = "923042572827";
+const WHATSAPP_MESSAGE = "Hi! I'd like to talk about a website project.";
+const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  WHATSAPP_MESSAGE
+)}`;
+
+function WhatsAppIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+      <path d="M12.001 2C6.478 2 2 6.478 2 12c0 1.887.526 3.653 1.44 5.159L2 22l4.977-1.406A9.945 9.945 0 0 0 12.001 22C17.523 22 22 17.522 22 12S17.523 2 12.001 2zm0 18.181a8.15 8.15 0 0 1-4.161-1.138l-.298-.177-3.096.875.85-3.07-.194-.316A8.15 8.15 0 0 1 3.82 12c0-4.516 3.665-8.181 8.181-8.181 4.516 0 8.181 3.665 8.181 8.181 0 4.516-3.665 8.181-8.181 8.181z" />
+    </svg>
+  );
+}
+
 function validateField(name: string, value: string) {
   if (name === "name") {
     if (value.trim().length < 2) return "Name must be at least 2 letters";
@@ -43,14 +64,35 @@ export function Contact() {
           align="center"
           title={
             <>
-              Have a {" "}
-              <span className="text-gradient">Question?</span>
+              Ready to Grow {" "}
+              <span className="text-gradient">Your Business?</span>
             </>
           }
-          description="Whether it's a question, collaboration, or just saying hello, I'd love to hear from you."
+          description="Tell us about your business and we'll create a website that helps you attract more customers and grow online."
         />
 
-        <Reveal delay={0.08} className="mx-auto mt-14 max-w-2xl">
+        <Reveal delay={0.06} className="mx-auto mt-14 max-w-2xl">
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glow-soft flex w-full items-center justify-center gap-3 rounded-2xl py-4 font-display text-base font-semibold text-primary-foreground transition-transform duration-300 hover:scale-[1.01]"
+            style={{ background: "#25D366" }}
+          >
+            <WhatsAppIcon size={20} />
+            Chat on WhatsApp
+          </a>
+
+          <div className="my-8 flex items-center gap-4">
+            <span className="h-px flex-1 bg-hairline" />
+            <span className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
+              Or send a message
+            </span>
+            <span className="h-px flex-1 bg-hairline" />
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.1} className="mx-auto max-w-2xl">
           <AnimatePresence mode="wait">
             {submitted ? (
               <motion.div

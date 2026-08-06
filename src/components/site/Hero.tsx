@@ -41,8 +41,7 @@ export function Hero() {
             transition={{ duration: 0.9, delay: 0.2 }}
             className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            Professional websites designed for local businesses that want to
-            stand out, earn trust, and generate more customers.
+            Your website should do more than look good. It should build trust, attract new customers, and help your business grow—24 hours a day..
           </motion.p>
 
           <motion.div
@@ -56,13 +55,13 @@ export function Hero() {
   className="glow-soft rounded-full px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:scale-[1.03]"
   style={{ background: "var(--gradient-accent)" }}
 >
-  View My Work
+See Recent Projects
 </a>
 <a
   href="#contact"
   className="rounded-full border border-border bg-surface px-7 py-3.5 text-sm font-semibold transition-all duration-300 hover:border-primary/50 hover:bg-surface-strong"
 >
-  Contact Me
+Start Your Project
 </a>
           </motion.div>
         </div>

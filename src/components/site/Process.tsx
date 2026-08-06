@@ -29,12 +29,13 @@ export function Process() {
     <section id="process" className="py-28">
       <div className="section-shell">
         <SectionHeading
-          eyebrow="My process"
+          eyebrow="How We Work?"
           title={
             <>
               Six steps, <span className="text-gradient">no guesswork</span>
             </>
           }
+          description="A clear process means fewer surprises, faster delivery, and a website built around your business goals."
         />
 
         <ol className="relative mt-16 border-l border-hairline pl-10 sm:pl-14">

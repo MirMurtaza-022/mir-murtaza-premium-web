@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, FileText } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Reveal, SectionHeading } from "./motion-primitives";
 import restaurant from "@/assets/BBQ.png";
 import Essence from "@/assets/Essence.png";
@@ -7,10 +8,34 @@ import logistics from "@/assets/ShayMah.png";
 import School from "@/assets/School.png";
 
 const projects = [
-  { title: "Royal BBQ", category: "Restaurant", image: restaurant , link :"https://royal-bbq-digital-experience.vercel.app/"},
-  { title: "Balochi Essence", category: "Fragrance", image: Essence , link :"https://balochi-essence.vercel.app/" },
-  { title: "ShayMah logistics hub", category: "Logistics", image: logistics , link :"https://shay-mah-logistics-hub.vercel.app" },
-  { title: "Gawadar Grammar School", category: "School", image: School , link :"https://gwadar-grammar-school.vercel.app" },
+  {
+    title: "Royal BBQ",
+    category: "Restaurant",
+    image: restaurant,
+    link: "https://royal-bbq-digital-experience.vercel.app/",
+    caseStudy: "/work/royal-bbq",
+  },
+  {
+    title: "Balochi Essence",
+    category: "Fragrance",
+    image: Essence,
+    link: "https://balochi-essence.vercel.app/",
+    caseStudy: null,
+  },
+  {
+    title: "ShayMah logistics hub",
+    category: "Logistics",
+    image: logistics,
+    link: "https://shay-mah-logistics-hub.vercel.app",
+    caseStudy: null,
+  },
+  {
+    title: "Gawadar Grammar School",
+    category: "School",
+    image: School,
+    link: "https://gwadar-grammar-school.vercel.app",
+    caseStudy: null,
+  },
 ];
 
 export function Portfolio() {
@@ -21,12 +46,12 @@ export function Portfolio() {
           eyebrow="Selected work"
           title={
             <>
-              A look at the <span className="text-gradient">craft</span>
+              Recent <span className="text-gradient">Projects</span>
             </>
           }
-          description="Placeholder projects showing the design language, structure, and detail level applied to every build."
+          description="Every project is designed to strengthen a brand, improve user experience, and support business goals."
         />
-        
+
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           {projects.map((project, i) => (
             <Reveal key={project.title} delay={i * 0.07}>
@@ -58,13 +83,28 @@ export function Portfolio() {
                       {project.title}
                     </h3>
                   </div>
-                  <a  href= {project.link}   target="_blank"
-  rel="noopener noreferrer" >
-                  <span className="glass-card inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold transition-colors duration-500 group-hover:border-primary/50 group-hover:bg-primary/15">
-                    View Project
-                    <ArrowUpRight size={14} />
-                  </span>
-                  </a>
+
+                  <div className="flex shrink-0 flex-col items-end gap-2">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="glass-card inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold transition-colors duration-500 group-hover:border-primary/50 group-hover:bg-primary/15">
+                        View Project
+                        <ArrowUpRight size={14} />
+                      </span>
+                    </a>
+
+                    {project.caseStudy && (
+                      <Link to={project.caseStudy}>
+                        <span className="glass-card inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold transition-colors duration-500 group-hover:border-primary/50 group-hover:bg-primary/15">
+                          Case Study
+                          <FileText size={14} />
+                        </span>
+                      </Link>
+                    )}
+                  </div>
                 </div>
               </motion.article>
             </Reveal>

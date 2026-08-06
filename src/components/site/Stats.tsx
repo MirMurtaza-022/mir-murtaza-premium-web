@@ -2,19 +2,19 @@ import { Counter, Reveal, SectionHeading } from "./motion-primitives";
 
 const stats = [
   {
-    value: 90,
-    suffix: "%",
-    label: "of customers judge a business based on its website",
-  },
-  {
     value: 75,
     suffix: "%",
-    label: "form an opinion on credibility from design alone",
+    label: "of users judge a company's credibility by its website design",
   },
   {
-    value: 3,
-    suffix: "s",
-    label: "is all it takes before a slow site loses a visitor",
+    value: 88,
+    suffix: "%",
+    label: "of online consumers are less likely to return after a poor website experience",
+  },
+  {
+    value: 53,
+    suffix: "%",
+    label: "of mobile visitors leave a site that takes longer than 3 seconds to load",
   },
 ];
 

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as StartAProjectRouteImport } from './routes/start-a-project'
+import { Route as WorkRoyalBbqRouteImport } from './routes/work.royal-bbq'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const StartAProjectRoute = StartAProjectRouteImport.update({
   path: '/start-a-project',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkRoyalBbqRoute = WorkRoyalBbqRouteImport.update({
+  id: '/work/royal-bbq',
+  path: '/work/royal-bbq',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/start-a-project': typeof StartAProjectRoute
+  '/work/royal-bbq': typeof WorkRoyalBbqRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/start-a-project': typeof StartAProjectRoute
+  '/work/royal-bbq': typeof WorkRoyalBbqRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/start-a-project': typeof StartAProjectRoute
+  '/work/royal-bbq': typeof WorkRoyalBbqRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/start-a-project'
+  fullPaths: '/' | '/start-a-project' | '/work/royal-bbq'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/start-a-project'
-  id: '__root__' | '/' | '/start-a-project'
+  to: '/' | '/start-a-project' | '/work/royal-bbq'
+  id: '__root__' | '/' | '/start-a-project' | '/work/royal-bbq'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   StartAProjectRoute: typeof StartAProjectRoute
+  WorkRoyalBbqRoute: typeof WorkRoyalBbqRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StartAProjectRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/royal-bbq': {
+      id: '/work/royal-bbq'
+      path: '/work/royal-bbq'
+      fullPath: '/work/royal-bbq'
+      preLoaderRoute: typeof WorkRoyalBbqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   StartAProjectRoute: StartAProjectRoute,
+  WorkRoyalBbqRoute: WorkRoyalBbqRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

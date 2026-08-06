@@ -35,19 +35,17 @@ export function About() {
         <div className="space-y-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
           <Reveal delay={0.05}>
             <p>
-              I design professional websites focused on helping local businesses
-              build credibility and attract more customers.
+            Every business deserves a website that creates a great first impression, builds credibility, and turns visitors into customers.
             </p>
           </Reveal>
           <Reveal delay={0.12}>
             <p>
-              I specialize in designing and developing modern websites that help local & international businesses establish a strong online presence. My focus goes beyond creating attractive designs. I build websites that are fast, responsive, and easy to navigate, ensuring every visitor has a seamless experience. From thoughtful layouts to clean branding, every detail is crafted with purpose. I believe a professional website is one of the most valuable investments a business can make, helping it build trust, stand out from competitors, and convert visitors into loyal customers. My goal is simple: create digital experiences that look premium, perform exceptionally, and support real business growth.
+            Every website is optimized for speed, mobile devices, and user experience so your customers enjoy a seamless experience on any screen.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="font-display text-xl font-medium text-foreground sm:text-2xl">
-              My goal is simple: create websites that make businesses look
-              premium.
+            The goal is simple: help your business look professional, build trust, and generate more enquiries online.
             </p>
           </Reveal>
           <Reveal delay={0.28}>

@@ -12,22 +12,22 @@ import { Reveal, SectionHeading } from "./motion-primitives";
 const reasons = [
   {
     icon: Sparkles,
-    title: "Modern Design",
+    title: "Professional First Impression",
     body: "Considered layouts and typography that make a business look established.",
   },
   {
     icon: Smartphone,
-    title: "Mobile Responsive",
+    title: "Perfect on Every Device",
     body: "Flawless on every screen, because most customers arrive on a phone.",
   },
   {
     icon: Zap,
-    title: "Fast Loading",
+    title: "Keep Visitors Engaged",
     body: "Lightweight builds tuned for speed so visitors never wait.",
   },
   {
     icon: Search,
-    title: "SEO Friendly",
+    title: "Help Customers Find You",
     body: "Clean structure and metadata so the right people find you.",
   },
   {
@@ -37,7 +37,7 @@ const reasons = [
   },
   {
     icon: LifeBuoy,
-    title: "Reliable Support",
+    title: "We're Here After Launch",
     body: "Ongoing help after launch, with fast and direct communication.",
   },
 ];
@@ -51,7 +51,7 @@ export function WhyChooseMe() {
           align="center"
           title={
             <>
-              Built to a <span className="text-gradient">higher standard</span>
+              Everything Your Business <span className="text-gradient"> Needs Online</span>
             </>
           }
         />
