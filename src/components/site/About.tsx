@@ -1,5 +1,12 @@
+import { Github, Instagram, Linkedin } from "lucide-react";
 import { Reveal, SectionHeading } from "./motion-primitives";
 import profilePic from "@/assets/profile.jpg";
+
+const socials = [
+  { label: "GitHub", icon: Github, href: "https://github.com/MirMurtaza-022" },
+  { label: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/mir-murtaza-7148b3404" },
+  { label: "Instagram", icon: Instagram, href: "https://www.instagram.com/mirmurtaza072" },
+];
 
 export function About() {
   return (
@@ -34,7 +41,7 @@ export function About() {
           </Reveal>
           <Reveal delay={0.12}>
             <p>
-            I specialize in designing and developing modern websites that help local & international businesses establish a strong online presence. My focus goes beyond creating attractive designs. I build websites that are fast, responsive, and easy to navigate, ensuring every visitor has a seamless experience. From thoughtful layouts to clean branding, every detail is crafted with purpose. I believe a professional website is one of the most valuable investments a business can make, helping it build trust, stand out from competitors, and convert visitors into loyal customers. My goal is simple: create digital experiences that look premium, perform exceptionally, and support real business growth.
+              I specialize in designing and developing modern websites that help local & international businesses establish a strong online presence. My focus goes beyond creating attractive designs. I build websites that are fast, responsive, and easy to navigate, ensuring every visitor has a seamless experience. From thoughtful layouts to clean branding, every detail is crafted with purpose. I believe a professional website is one of the most valuable investments a business can make, helping it build trust, stand out from competitors, and convert visitors into loyal customers. My goal is simple: create digital experiences that look premium, perform exceptionally, and support real business growth.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
@@ -42,6 +49,25 @@ export function About() {
               My goal is simple: create websites that make businesses look
               premium.
             </p>
+          </Reveal>
+          <Reveal delay={0.28}>
+            <div className="flex items-center gap-3">
+              {socials.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    aria-label={social.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex size-9 items-center justify-center rounded-full border border-hairline text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:text-foreground"
+                  >
+                    <Icon size={15} />
+                  </a>
+                );
+              })}
+            </div>
           </Reveal>
         </div>
       </div>

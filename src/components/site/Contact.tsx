@@ -43,11 +43,11 @@ export function Contact() {
           align="center"
           title={
             <>
-              Let's build something{" "}
-              <span className="text-gradient">premium</span>
+              Have a {" "}
+              <span className="text-gradient">Question?</span>
             </>
           }
-          description="Tell me about the business and what you need. I'll reply with a clear plan."
+          description="Whether it's a question, collaboration, or just saying hello, I'd love to hear from you."
         />
 
         <Reveal delay={0.08} className="mx-auto mt-14 max-w-2xl">

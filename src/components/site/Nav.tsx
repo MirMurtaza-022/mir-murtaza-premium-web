@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.png";5
+import { Link } from "@tanstack/react-router";
 
 
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Work", href: "#work" },
-  { label: "Process", href: "#process" },
-  { label: "Services", href: "#services" },
+  { label: "About", hash: "about" },
+  { label: "Work", hash: "work" },
+  { label: "Process", hash: "process" },
+  { label: "Services", hash: "services" },
 ];
 
 export function Nav() {
@@ -38,24 +39,25 @@ export function Nav() {
   MIR<span className="text-muted-foreground">.</span>MURTAZA
 </a>
 
-          <nav className="hidden items-center gap-8 md:flex">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+<nav className="hidden items-center gap-8 md:flex">
+  {links.map((link) => (
+    <Link
+      key={link.hash}
+      to="/"
+      hash={link.hash}
+      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+    >
+      {link.label}
+    </Link>
+  ))}
+</nav>
 
-          <a
-            href="#contact"
-            className="rounded-full border border-border bg-surface-strong px-5 py-2 text-sm font-medium transition-all duration-300 hover:border-primary/50 hover:bg-primary/10"
-          >
-            Start a project
-          </a>
+          <Link
+  to="/start-a-project"
+  className="rounded-full border border-border bg-surface-strong px-5 py-2 text-sm font-medium transition-all duration-300 hover:border-primary/50 hover:bg-primary/10"
+>
+  Start a project
+</Link>
         </div>
       </div>
     </motion.header>
