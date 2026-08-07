@@ -233,7 +233,7 @@ function StartAProject() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
                 className="glass-card rounded-4xl border border-border p-7 sm:p-10"
-                onSubmit={(event) => {
+                onSubmit={async(event) => {
                   event.preventDefault();
 
                   const newErrors: Record<string, string> = {
@@ -247,16 +247,57 @@ function StartAProject() {
                     timeline: values.timeline ? "" : "Please select a timeline",
                     logoNeeded: values.logoNeeded ? "" : "Please choose an option",
                   };
+                  
                   setErrors(newErrors);
-
+                  
                   const hasError = Object.values(newErrors).some((msg) => msg !== "");
                   if (hasError) return;
-
+                  
                   setSending(true);
-                  window.setTimeout(() => {
+                  
+                  try {
+                    const formData = new FormData();
+                  
+                    formData.append("access_key", "f3d00772-4136-4aff-addf-7ef0284cb49e");
+                  
+                    Object.entries(values).forEach(([key, value]) => {
+                      formData.append(key, value);
+                    });
+                  
+                    const response = await fetch("https://api.web3forms.com/submit", {
+                      method: "POST",
+                      body: formData,
+                    });
+                  
+                    const data = await response.json();
+                  
+                    if (data.success) {
+                      setSubmitted(true);
+                  
+                      setValues({
+                        name: "",
+                        email: "",
+                        phone: "",
+                        country: "",
+                        budget: "",
+                        websiteType: "",
+                        pages: "",
+                        timeline: "",
+                        logoNeeded: "",
+                        details: "",
+                      });
+                  
+                      setErrors({});
+                    } else {
+                      console.error(data);
+                      alert("Something went wrong. Please try again.");
+                    }
+                  } catch (error) {
+                    console.error(error);
+                    alert("Failed to submit the form.");
+                  } finally {
                     setSending(false);
-                    setSubmitted(true);
-                  }, 700);
+                  }
                 }}
               >
                 <div className="grid gap-5 sm:grid-cols-2">

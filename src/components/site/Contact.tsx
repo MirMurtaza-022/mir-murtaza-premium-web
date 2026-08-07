@@ -180,29 +180,64 @@ export function Contact() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
                 className="glass-card rounded-4xl p-7 sm:p-10"
-                onSubmit={(event) => {
+                onSubmit={async (event) => {
                   event.preventDefault();
-
+                
+                  const form = event.currentTarget;
+                
                   const newErrors = {
                     name: validateField("name", values.name),
                     email: validateField("email", values.email),
                     phone: validateField("phone", values.phone),
                   };
+                
                   setErrors(newErrors);
-
+                
                   const hasError = Object.values(newErrors).some((msg) => msg !== "");
                   if (hasError) {
                     toast.error("Please fix the errors before submitting.");
                     return;
                   }
-
+                
                   setSending(true);
-                  window.setTimeout(() => {
+                
+                  try {
+                    const formData = new FormData(form);
+                
+                    formData.append(
+                      "access_key",
+                      "f3d00772-4136-4aff-addf-7ef0284cb49e"
+                    );
+                
+                    const response = await fetch("https://api.web3forms.com/submit", {
+                      method: "POST",
+                      body: formData,
+                    });
+                
+                    const data = await response.json();
+                
+                    if (data.success) {
+                      setSubmitted(true);
+                
+                      form.reset();
+                
+                      setValues({
+                        name: "",
+                        email: "",
+                        phone: "",
+                      });
+                
+                      toast.success("Message sent successfully!");
+                    } else {
+                      console.error(data);
+                      toast.error("Something went wrong. Please try again.");
+                    }
+                  } catch (error) {
+                    console.error(error);
+                    toast.error("Failed to send message.");
+                  } finally {
                     setSending(false);
-                    setSubmitted(true);
-                    (event.target as HTMLFormElement).reset();
-                    setValues({ name: "", email: "", phone: "" });
-                  }, 700);
+                  }
                 }}
               >
                 <div className="grid gap-5 sm:grid-cols-2">
