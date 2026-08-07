@@ -20,21 +20,21 @@ const projects = [
     category: "Fragrance",
     image: Essence,
     link: "https://balochi-essence.vercel.app/",
-    caseStudy: null,
+    caseStudy: "null",
   },
   {
     title: "ShayMah logistics hub",
     category: "Logistics",
     image: logistics,
     link: "https://shay-mah-logistics-hub.vercel.app",
-    caseStudy: null,
+    caseStudy: "null",
   },
   {
     title: "Gawadar Grammar School",
     category: "School",
     image: School,
     link: "https://gwadar-grammar-school.vercel.app",
-    caseStudy: null,
+    caseStudy: "null",
   },
 ];
 
@@ -90,20 +90,20 @@ export function Portfolio() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <span className="glass-card inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold transition-colors duration-500 group-hover:border-primary/50 group-hover:bg-primary/15">
+                      <span className="glass-card inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold transition-colors duration-500 hover:border-primary/50 group-hover:bg-primary/15">
                         View Project
                         <ArrowUpRight size={14} />
                       </span>
                     </a>
 
-                    {project.caseStudy && (
+                    {/* {project.caseStudy && (
                       <Link to={project.caseStudy}>
-                        <span className="glass-card inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold transition-colors duration-500 group-hover:border-primary/50 group-hover:bg-primary/15">
+                        <span className="glass-card inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold transition-colors duration-500 hover:border-primary/50 group-hover:bg-primary/15">
                           Case Study
                           <FileText size={14} />
                         </span>
                       </Link>
-                    )}
+                    )} */}
                   </div>
                 </div>
               </motion.article>

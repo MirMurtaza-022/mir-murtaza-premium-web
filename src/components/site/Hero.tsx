@@ -119,7 +119,7 @@ function LaptopMockup({ image }: { image: string }) {
       >
         <motion.div
           animate={{ y: [0, -14, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
         >
           <div className="glass-card glow-soft rounded-3xl p-3">
             <div className="overflow-hidden rounded-2xl border border-hairline bg-background">
@@ -155,7 +155,7 @@ function LaptopMockup({ image }: { image: string }) {
           style={{ transform: "translateZ(40px)" }}
           className="glass-card absolute -bottom-6 -left-4 hidden rounded-2xl px-5 py-3 sm:block"
         >
-          <p className="font-display text-lg font-semibold">98</p>
+          <p className="font-display text-lg font-semibold">95</p>
           <p className="text-xs text-muted-foreground">Performance score</p>
         </motion.div>
       </motion.div>

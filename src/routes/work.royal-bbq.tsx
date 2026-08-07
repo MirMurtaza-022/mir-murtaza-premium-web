@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { Reveal } from "@/components/site/motion-primitives";
+import desktopShot from "@/assets/royal-bbq-desktop.png";
+import mobileShot from "@/assets/royal-bbq-mobile.png";
 import {
   ArrowLeft,
   ArrowRight,
@@ -144,43 +146,45 @@ function DeviceMockup({
 }) {
   if (variant === "mobile") {
     return (
-      <div
+      <motion.div
+        whileHover={{ scale: 1.05, y: -8 }}
+        initial={{ opacity: 0, y: 30, scale: 0.95 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
         className={`animate-float w-40 rounded-[2rem] border-4 border-[#1c1815] bg-[#0F0F0F] p-2 shadow-[0_40px_100px_-30px_rgba(212,175,55,0.25)] sm:w-48 ${className}`}
       >
-        <div className="aspect-[9/19] w-full overflow-hidden rounded-[1.4rem] bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.18),transparent_65%)]">
-          <div className="flex h-full flex-col items-center justify-center gap-2 px-4 text-center">
-            <UtensilsCrossed className="size-6 text-[#D4AF37]/50" />
-            <span className="text-[10px] uppercase tracking-[0.2em] text-white/30">
-              Mobile
-            </span>
-          </div>
+        <div className="aspect-[9/19] w-full overflow-hidden rounded-[1.4rem] bg-[#0F0F0F]">
+          <img
+            src={mobileShot}
+            alt="Royal BBQ mobile preview"
+            className="h-full w-full object-cover object-top"
+          />
         </div>
-      </div>
+      </motion.div>
     );
   }
 
   return (
-    <div
+    <motion.div
+      whileHover={{ scale: 1.05, y: -8 }}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
       className={`animate-float w-full max-w-xl rounded-2xl border-4 border-[#1c1815] bg-[#0F0F0F] p-2 shadow-[0_40px_100px_-30px_rgba(212,175,55,0.25)] ${className}`}
       style={{ animationDelay: "0.4s" }}
     >
-      <div className="aspect-[16/10] w-full overflow-hidden rounded-lg bg-[radial-gradient(circle_at_30%_20%,rgba(212,175,55,0.15),transparent_60%)]">
-        <div className="flex h-full flex-col items-center justify-center gap-3">
-          <span
-            className="text-2xl italic text-[#D4AF37]/60"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
-            Royal BBQ
-          </span>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-white/25">
-            Desktop
-          </span>
-        </div>
+      <div className="aspect-[16/10] w-full overflow-hidden rounded-lg bg-[#0F0F0F]">
+        <img
+          src={desktopShot}
+          alt="Royal BBQ desktop preview"
+          className="h-full w-full object-cover object-top"
+        />
       </div>
-    </div>
+    </motion.div>
   );
 }
-
 /* -----------------------------------------------------------------------
    PAGE
 ----------------------------------------------------------------------- */
@@ -301,6 +305,7 @@ const goals = [
 
 function RoyalBBQCaseStudy() {
   return (
+    
     <div
       className="min-h-screen bg-[#0F0F0F] text-white antialiased"
       style={{ fontFamily: "'Inter', sans-serif" }}
@@ -313,7 +318,7 @@ function RoyalBBQCaseStudy() {
             hash="work"
             className="inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-[#D4AF37]"
           >
-            <ArrowLeft size={16} />
+             <ArrowLeft size={16} />
             Back to Work
           </Link>
           <span className="text-xs uppercase tracking-[0.25em] text-white/30">
@@ -321,6 +326,7 @@ function RoyalBBQCaseStudy() {
           </span>
         </div>
       </div>
+    
 
       {/* ---------------------------------------------------------------
           SECTION 1 — HERO
