@@ -4,6 +4,11 @@ import logistics from "@/assets/ShayMah.png";
 import School from "@/assets/School.png";
 import Clinic from "@/assets/Clinic.png";
 import Gym from "@/assets/Gym.png";
+import crownandcraft from "@/assets/crownandcraft.png";
+import velo from "@/assets/velo.png";
+import ncrcet from "@/assets/ncrcet.png"
+import gamingstore from "@/assets/gamingstore.png"
+import nueplex from "@/assets/nueplex.png"
 
 export interface PortfolioProject {
   title: string;
@@ -23,6 +28,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: "Restaurant",
     image: restaurant,
     link: "https://royal-bbq-digital-experience.vercel.app/",
+    status: "Demo",
     caseStudy: null,
   },
   {
@@ -30,6 +36,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: "Fragrance",
     image: Essence,
     link: "https://balochi-essence.vercel.app/",
+    status: "Demo",
     caseStudy: null,
   },
   {
@@ -37,6 +44,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: "Logistics",
     image: logistics,
     link: "https://shay-mah-logistics-hub.vercel.app",
+    status: "Demo",
     caseStudy: null,
   },
   {
@@ -44,6 +52,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: "School",
     image: School,
     link: "https://gwadar-grammar-school.vercel.app",
+    status: "Demo",
     caseStudy: null,
   },
   {
@@ -51,13 +60,57 @@ export const portfolioProjects: PortfolioProject[] = [
     category: "Gym",
     image: Gym,
     link: "https://kinetic-forge-peach.vercel.app/",
+    status: "Demo",
     caseStudy: null,
+    is3D: true,
   },
   {
     title: "Bio Glow",
     category: "Clinic",
     image: Clinic,
     link: "https://bioglow-elevate.vercel.app/",
+    status: "Demo",
+    caseStudy: null,
+  },
+  {
+    title: "Crown And Craft",
+    category: "Saloon",
+    image: crownandcraft,
+    link: "https://crown-craft-grooming.vercel.app/",
+    status: "Demo",
+    caseStudy: null,
+    is3D: true,
+  },  
+  {
+    title: "VELO",
+    category: "Padel Club",
+    image: velo,
+    link: "https://velo-padel-experience.vercel.app/",
+    status: "Demo",
+    caseStudy: null,
+  },  
+  {
+    title: "NCR-CET",
+    category: "College",
+    image: ncrcet,
+    link: "https://university-refresh.vercel.app/",
+    status: "Demo",
+    caseStudy: null,
+  },  
+  {
+    title: "Gaming Valut",
+    category: "Gaming Store",
+    image: gamingstore,
+    link: "https://gaming-vault-unlocked.vercel.app/",
+    status: "Demo",
+    caseStudy: null,
+  },
+  {
+    title: "Neuplex",
+    category: "Cinema",
+    image: nueplex,
+    link: "https://neuplex-five.vercel.app/",
+    status: "Demo",
     caseStudy: null,
   },
 ];

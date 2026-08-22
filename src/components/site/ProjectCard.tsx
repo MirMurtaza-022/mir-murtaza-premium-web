@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowUpRight, FileText } from "lucide-react";
+import { ArrowUpRight, FileText, Box } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Reveal } from "./motion-primitives";
 import type { PortfolioProject } from "@/data/portfolio-projects";
@@ -18,6 +18,19 @@ export function ProjectCard({
         transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
         className="group glass-card relative overflow-hidden rounded-3xl"
       >
+        {project.status && (
+  <span className="absolute left-4 top-4 z-10 rounded-full border border-white/15 bg-background/50 px-3 py-1.5 text-[10px] font-medium uppercase tracking-wider text-white/80 backdrop-blur-md">
+    {project.status}
+  </span>
+)}
+
+{project.is3D && (
+  <span className="absolute right-4 top-4 z-10 inline-flex items-center gap-1 rounded-full border border-primary/30 bg-background/50 px-3 py-1.5 text-[10px] font-medium uppercase tracking-wider text-primary backdrop-blur-md">
+    <Box size={11} />
+    3D
+  </span>
+)}
+
         <div className="aspect-[4/2] w-full overflow-hidden">
           <img
             src={project.image}
