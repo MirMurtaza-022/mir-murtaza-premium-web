@@ -173,8 +173,8 @@ function AboutPage() {
         <Reveal delay={0.3}>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link
-              to="/"
-              hash="contact"
+              to="/start-a-project"
+              hash=""
               className="glow-soft inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:scale-[1.03]"
               style={{ background: "var(--gradient-accent)" }}
             >

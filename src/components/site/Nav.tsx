@@ -142,7 +142,7 @@ export function Nav() {
 
               <div className="mt-2 border-t border-hairline p-2">
                 <Link
-                  to={"/link"}
+                  to={"/start-a-project"}
                   onClick={() => setOpen(false)}
                   className="glow-soft mb-3 flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-primary-foreground"
                   style={{ background: "var(--gradient-accent)" }}
