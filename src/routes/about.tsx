@@ -58,9 +58,9 @@ const beyond = [
     text: "New technologies, interfaces, animations, and ideas constantly end up in the lab. Some survive. Most become educational casualties.",
   },
   {
-    icon: Gamepad2,
-    title: "Offline, occasionally",
-    text: "When I'm not building, I'm probably playing football, gaming, exploring ideas, or disappearing from the internet for a few hours.",
+    icon: Star,
+    title: "More Than Code",
+    text: "Good websites aren’t just about writing code. I care about design, usability, performance, and the small details that make an experience feel complete.",
   },
 ];
 
