@@ -1,28 +1,8 @@
+import { Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 import { Reveal, SectionHeading } from "./motion-primitives";
 
-const steps = [
-  {
-    title: "Discovery",
-    body: "Understanding the business, the customer, and what success looks like.",
-  },
-  {
-    title: "Planning",
-    body: "Structure, page flow, and content mapped before a pixel is drawn.",
-  },
-  {
-    title: "Design",
-    body: "A polished visual direction shaped around trust and clarity.",
-  },
-  {
-    title: "Development",
-    body: "Clean, fast, responsive build with attention to every detail.",
-  },
-  { title: "Launch", body: "Testing, performance checks, and a smooth go-live." },
-  {
-    title: "Support",
-    body: "Updates and improvements as the business keeps growing.",
-  },
-];
+const steps = ["Discovery", "Planning", "Design", "Development", "Launch", "Support"];
 
 export function Process() {
   return (
@@ -38,26 +18,35 @@ export function Process() {
           description="A clear process means fewer surprises, faster delivery, and a website built around your business goals."
         />
 
-        <ol className="relative mt-16 border-l border-hairline pl-10 sm:pl-14">
-          {steps.map((step, i) => (
-            <li key={step.title} className="relative pb-12 last:pb-0">
-              <Reveal delay={i * 0.05}>
-                <span
-                  className="absolute -left-[3.25rem] mt-1 flex size-9 items-center justify-center rounded-full border border-hairline bg-background font-display text-xs font-semibold text-primary sm:-left-[4.25rem]"
-                  aria-hidden
-                >
-                  {String(i + 1).padStart(2, "0")}
+        <Reveal delay={0.1}>
+          <div className="mt-14 flex flex-wrap items-center gap-x-3 gap-y-3">
+            {steps.map((s, i) => (
+              <span key={s} className="flex items-center gap-3">
+                <span className="glass-card flex items-center gap-2.5 rounded-full px-4 py-2 text-sm font-medium">
+                  <span className="font-display text-xs font-bold text-primary">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  {s}
                 </span>
-                <h3 className="text-xl font-semibold sm:text-2xl">
-                  {step.title}
-                </h3>
-                <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  {step.body}
-                </p>
-              </Reveal>
-            </li>
-          ))}
-        </ol>
+                {i < steps.length - 1 && (
+                  <ArrowRight size={14} className="text-muted-foreground/50" aria-hidden />
+                )}
+              </span>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.18}>
+          <Link
+            to="/process"
+            data-hover
+            className="group mt-10 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
+            style={{ background: "var(--gradient-accent)" }}
+          >
+            See the full process
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </Reveal>
       </div>
     </section>
   );

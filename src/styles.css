@@ -169,3 +169,15 @@
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #818cf8, #c084fc);
 }
+
+/* Custom cursor — hide the native pointer on precise pointers only */
+@media (hover: hover) and (pointer: fine) {
+  body.has-cursor,
+  body.has-cursor a,
+  body.has-cursor button,
+  body.has-cursor input,
+  body.has-cursor textarea,
+  body.has-cursor [data-hover] {
+    cursor: none;
+  }
+}

@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { useRef } from "react";
 import restaurant from "@/assets/work-restaurant.jpg";
+import { Link } from "@tanstack/react-router";
 
 export function Hero() {
   return (
@@ -41,29 +42,49 @@ export function Hero() {
             transition={{ duration: 0.9, delay: 0.2 }}
             className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            Your website should do more than look good. It should build trust, attract new customers, and help your business grow—24 hours a day..
+            Your website should do more than look good. It should build trust, attract new customers, and help your business grow 24 hours a day.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.3 }}
-            className="mt-10 flex flex-wrap items-center gap-4"
-          >
-            <a
-            href="#work"
-  className="glow-soft rounded-full px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:scale-[1.03]"
-  style={{ background: "var(--gradient-accent)" }}
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.9, delay: 0.3 }}
+  className="mt-10"
 >
-See Recent Projects
-</a>
-<a
-  href="#contact"
-  className="rounded-full border border-border bg-surface px-7 py-3.5 text-sm font-semibold transition-all duration-300 hover:border-primary/50 hover:bg-surface-strong"
->
-Start Your Project
-</a>
-          </motion.div>
+  <div className="flex flex-wrap items-center gap-4">
+    {/* Primary — the money button */}
+    <Link
+      to="/start-a-project"
+      hash=""
+      className="glow-soft rounded-full px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:scale-[1.03]"
+      style={{ background: "var(--gradient-accent)" }}
+    >
+      Start Your Project
+    </Link>
+
+    {/* Secondary — scroll to the work section below */}
+    <Link
+      to="/"
+      hash="project"
+      className="rounded-full border border-border bg-surface px-7 py-3.5 text-sm font-semibold transition-all duration-300 hover:border-primary/50 hover:bg-surface-strong"
+    >
+      See Recent Projects
+    </Link>
+  </div>
+
+  {/* Micro trust line */}
+  <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+    <span className="inline-flex items-center gap-2">
+      <span className="relative flex size-1.5">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-60" />
+        <span className="relative inline-flex size-1.5 rounded-full bg-green-400" />
+      </span>
+      Currently accepting new projects
+    </span>
+    <span className="hidden h-3 w-px bg-hairline sm:inline-block" aria-hidden />
+    <span>11 live demos · replies within 24 hours</span>
+  </div>
+</motion.div>
         </div>
 
         <LaptopMockup image={restaurant} />

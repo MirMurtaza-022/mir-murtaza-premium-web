@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Reveal, SectionHeading } from "./motion-primitives";
@@ -15,18 +16,6 @@ const services = [
     title: "Landing Pages",
     body: "Single-focus pages built to convert enquiries and bookings.",
   },
-  {
-    title: "Website Redesign",
-    body: "Turning an outdated site into something that earns trust.",
-  },
-  {
-    title: "Portfolio Websites",
-    body: "Elegant showcases for creatives and independent professionals.",
-  },
-  {
-    title: "Maintenance & Updates",
-    body: "Keeping content fresh, secure, and performing month after month.",
-  },
 ];
 
 export function Services() {
@@ -40,9 +29,10 @@ export function Services() {
               Services That <span className="text-gradient">Grow Your Business</span>
             </>
           }
+          description="From a single landing page to a complete business site — pick what fits, skip what doesn't."
         />
 
-        <div className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-5 md:grid-cols-3">
           {services.map((service, i) => (
             <Reveal key={service.title} delay={i * 0.06}>
               <motion.article
@@ -63,6 +53,18 @@ export function Services() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={0.18}>
+          <Link
+            to="/services"
+            data-hover
+            className="group mt-10 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
+            style={{ background: "var(--gradient-accent)" }}
+          >
+            Explore all 6 services
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </Reveal>
       </div>
     </section>
   );

@@ -10,7 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ProcessRouteImport } from './routes/process'
 import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as StartAProjectRouteImport } from './routes/start-a-project'
 import { Route as WorkRoyalBbqRouteImport } from './routes/work.royal-bbq'
 
@@ -19,9 +22,24 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProcessRoute = ProcessRouteImport.update({
+  id: '/process',
+  path: '/process',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StartAProjectRoute = StartAProjectRouteImport.update({
@@ -37,34 +55,68 @@ const WorkRoyalBbqRoute = WorkRoyalBbqRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRoute
+  '/services': typeof ServicesRoute
   '/start-a-project': typeof StartAProjectRoute
   '/work/royal-bbq': typeof WorkRoyalBbqRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRoute
+  '/services': typeof ServicesRoute
   '/start-a-project': typeof StartAProjectRoute
   '/work/royal-bbq': typeof WorkRoyalBbqRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRoute
+  '/services': typeof ServicesRoute
   '/start-a-project': typeof StartAProjectRoute
   '/work/royal-bbq': typeof WorkRoyalBbqRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/projects' | '/start-a-project' | '/work/royal-bbq'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/process'
+    | '/projects'
+    | '/services'
+    | '/start-a-project'
+    | '/work/royal-bbq'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/projects' | '/start-a-project' | '/work/royal-bbq'
-  id: '__root__' | '/' | '/projects' | '/start-a-project' | '/work/royal-bbq'
+  to:
+    | '/'
+    | '/about'
+    | '/process'
+    | '/projects'
+    | '/services'
+    | '/start-a-project'
+    | '/work/royal-bbq'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/process'
+    | '/projects'
+    | '/services'
+    | '/start-a-project'
+    | '/work/royal-bbq'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ProcessRoute: typeof ProcessRoute
   ProjectsRoute: typeof ProjectsRoute
+  ServicesRoute: typeof ServicesRoute
   StartAProjectRoute: typeof StartAProjectRoute
   WorkRoyalBbqRoute: typeof WorkRoyalBbqRoute
 }
@@ -78,11 +130,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/process': {
+      id: '/process'
+      path: '/process'
+      fullPath: '/process'
+      preLoaderRoute: typeof ProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects': {
       id: '/projects'
       path: '/projects'
       fullPath: '/projects'
       preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/start-a-project': {
@@ -104,7 +177,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ProcessRoute: ProcessRoute,
   ProjectsRoute: ProjectsRoute,
+  ServicesRoute: ServicesRoute,
   StartAProjectRoute: StartAProjectRoute,
   WorkRoyalBbqRoute: WorkRoyalBbqRoute,
 }

@@ -10,7 +10,7 @@ export function Portfolio() {
   const featured = portfolioProjects.slice(0, HOMEPAGE_COUNT);
 
   return (
-    <section id="work" className="py-28">
+    <section id="project" className="py-28">
       <div className="section-shell">
         <SectionHeading
           eyebrow="Selected work"

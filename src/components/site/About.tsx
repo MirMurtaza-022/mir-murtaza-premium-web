@@ -1,6 +1,8 @@
 import { Github, Instagram, Linkedin } from "lucide-react";
 import { Reveal, SectionHeading } from "./motion-primitives";
 import profilePic from "@/assets/profile.jpg";
+import { Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 
 const socials = [
   { label: "GitHub", icon: Github, href: "https://github.com/MirMurtaza-022" },
@@ -49,6 +51,13 @@ export function About() {
             </p>
           </Reveal>
           <Reveal delay={0.28}>
+          <Link
+    to="/about"
+    className="group inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-foreground"
+  >
+    More about me
+    <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+  </Link>
             <div className="flex items-center gap-3">
               {socials.map((social) => {
                 const Icon = social.icon;

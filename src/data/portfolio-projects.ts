@@ -9,6 +9,7 @@ import velo from "@/assets/velo.png";
 import ncrcet from "@/assets/ncrcet.png"
 import gamingstore from "@/assets/gamingstore.png"
 import nueplex from "@/assets/nueplex.png"
+import portfolio1 from "@/assets/shayparasdesignstudio.png"
 
 export interface PortfolioProject {
   title: string;
@@ -16,12 +17,15 @@ export interface PortfolioProject {
   image: string;
   link: string;
   caseStudy: string | null;
+  status: "Demo" | "Sold";
+  is3D?: boolean;
 }
 
 /**
  * Add new projects here — they'll automatically show up on the
  * full /projects page. Only the first two show on the homepage.
  */
+
 export const portfolioProjects: PortfolioProject[] = [
   {
     title: "Royal BBQ",
@@ -71,6 +75,7 @@ export const portfolioProjects: PortfolioProject[] = [
     link: "https://bioglow-elevate.vercel.app/",
     status: "Demo",
     caseStudy: null,
+    is3D: false,
   },
   {
     title: "Crown And Craft",
@@ -111,6 +116,14 @@ export const portfolioProjects: PortfolioProject[] = [
     image: nueplex,
     link: "https://neuplex-five.vercel.app/",
     status: "Demo",
+    caseStudy: null,
+  },
+  {
+    title: "Shay Paras Design Studio",
+    category: "Portfolio",
+    image: portfolio1,
+    link: "https://shayparasdesignstudio.vercel.app/",
+    status: "Sold",
     caseStudy: null,
   },
 ];

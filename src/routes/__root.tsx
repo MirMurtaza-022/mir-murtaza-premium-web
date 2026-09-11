@@ -6,14 +6,16 @@ import {
   useRouter,
   HeadContent,
   Scripts,
-} from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
-
+} 
+from "@tanstack/react-router";
+import { useEffect, useState, type ReactNode } from "react";
+import { AnimatePresence } from "motion/react";
+import { Loader } from "@/components/site/Loader";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
+import { Cursor } from "@/components/site/Cursor";
 // import { DevNotice } from "@/components/site/DevNotice";
 
 
@@ -133,13 +135,28 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    document.body.style.overflow = loading ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [loading]);
 
   return (
     <QueryClientProvider client={queryClient}>
-  {/* <DevNotice /> */}
-  <Nav />
-  <Outlet />
-  <Footer />
-</QueryClientProvider>
+      <AnimatePresence>
+        {loading && <Loader onDone={() => setLoading(false)} />}
+      </AnimatePresence>
+      <Cursor />
+      {!loading && (
+        <>
+          <Nav />
+          <Outlet />
+          <Footer />
+        </>
+      )}
+    </QueryClientProvider>
   );
 }
