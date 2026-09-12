@@ -40,7 +40,7 @@ export function Loader({ onDone }: { onDone: () => void }) {
       />
       {/* Solid near-black curtain — sweeps up first */}
       <motion.div
-        className="absolute inset-0 z-20 bg-background"
+        className="absolute inset-0 z-20" style={{ background: "oklch(0.14 0 0)" }}
         exit={{ y: "-100%" }}
         transition={{ duration: 0.85, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
       >
@@ -203,7 +203,7 @@ export function Loader({ onDone }: { onDone: () => void }) {
           animate={{ opacity: [0, 1, 1, 0], y: [10, 0, 0, -6] }}
           transition={{ duration: 2, delay: 1.65, times: [0, 0.25, 0.8, 1], ease: "easeInOut" }}
         >
-          <p className="font-display text-xs font-semibold tracking-[0.45em] text-foreground uppercase">
+          <p className="text-[10px] tracking-[0.35em] text-white/60 uppercase">
             Mir Murtaza
           </p>
           <p className="text-[10px] tracking-[0.35em] text-muted-foreground/70 uppercase">

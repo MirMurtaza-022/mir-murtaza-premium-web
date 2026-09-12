@@ -15,15 +15,15 @@ const steps = [
   {
     icon: Search,
     title: "Discovery",
-    duration: "Day 1",
-    body: "Every project starts with understanding — your business, your customers, and what success actually looks like for you. No designing in the dark.",
-    happens: ["Kickoff questionnaire or short call", "Goals, audience & competitors mapped", "Scope and fixed timeline agreed"],
+    duration: "Days 1-2",
+    body: "So, Before we even start anything; Want to hear your ideas about the website. All the major and minor details about it.",
+    happens: ["Short calls & Deeply conversation", "I'll handle the codes; You give your idea", "Will explain every detail", "Will send the quatation"],
     gets: "A written brief + honest quote",
   },
   {
     icon: PenTool,
     title: "Planning",
-    duration: "Days 1–2",
+    duration: "Days 2-3",
     body: "Before a single pixel is drawn, the structure is mapped — which pages exist, how visitors flow through them, and what content goes where.",
     happens: ["Sitemap and page flow designed", "Content outline structured", "Nothing starts until you approve"],
     gets: "A site map + content plan to sign off",
@@ -34,7 +34,7 @@ const steps = [
     duration: "Days 3–6",
     body: "A polished visual direction shaped around trust and clarity — colors, type, and layouts that make your business look established from the first glance.",
     happens: ["Homepage concept designed first", "Full pages designed around your brand", "Feedback rounds until it feels right"],
-    gets: "Full Figma designs to review",
+    gets: "Full designs to review",
   },
   {
     icon: CodeXml,

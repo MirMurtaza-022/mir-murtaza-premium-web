@@ -65,10 +65,12 @@ const beyond = [
 ];
 
 const facts = [
-  "Based in Karachi, working with clients worldwide.",
-  "I reply to every serious enquiry within 24 hours.",
-  "Every website starts from your idea — and I'll make it real.",
-  "I listen, think, and come up with an idea that will always convince you.",
+  "I turn feedback into revisions the same day, not the same week.",
+  "Based in Karachi, working across time zones with clients worldwide.",
+  "Usually online late nights; perfect for US/UK clients.",
+  "I keep 2–3 projects at a time, so yours gets real attention.",
+  "I say no to projects I don't believe in, so when I say yes; I mean it.",
+  "Deadlines aren't suggestions to me, they're promises.",
 ];
 
 const marqueeWords = ["Design", "Develop", "Optimize", "Deliver", "Strategy", "Launch", "Evolve", "Support", "Growth", "Research"];

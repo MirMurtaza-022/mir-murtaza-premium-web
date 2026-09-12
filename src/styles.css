@@ -49,6 +49,7 @@
 
 :root {
   --radius: 1.25rem;
+  color-scheme: dark;
 
   /* #090909 */
   --background: oklch(0.14 0 0);
@@ -180,4 +181,68 @@
   body.has-cursor [data-hover] {
     cursor: none;
   }
+}
+
+/* ---------- Light theme (applied when <html data-theme="light">) ---------- */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --background: oklch(0.97 0.004 285);
+  --foreground: oklch(0.16 0.008 285);
+
+  --card: oklch(1 0 0 / 70%);
+  --card-foreground: oklch(0.16 0.008 285);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.16 0.008 285);
+
+  /* Brand colors keep their hue, deepened slightly for white backgrounds */
+  --primary: oklch(0.58 0.19 261.5);
+  --primary-foreground: oklch(0.98 0 0);
+  --violet: oklch(0.52 0.24 293.2);
+
+  --secondary: oklch(0.94 0.005 285);
+  --secondary-foreground: oklch(0.16 0.008 285);
+  --muted: oklch(0.95 0.005 285);
+  --muted-foreground: oklch(0.44 0.012 285);
+  --accent: oklch(0.93 0.008 285);
+  --accent-foreground: oklch(0.16 0.008 285);
+
+  --border: oklch(0.2 0.01 285 / 12%);
+  --input: oklch(0.2 0.01 285 / 14%);
+  --ring: oklch(0.58 0.19 261.5 / 55%);
+
+  --surface: oklch(1 0 0 / 60%);
+  --surface-strong: oklch(1 0 0 / 85%);
+  --hairline: oklch(0.2 0.01 285 / 14%);
+
+  --shadow-elegant: 0 30px 80px -40px oklch(0.58 0.19 261.5 / 35%);
+  --shadow-card: 0 24px 60px -32px oklch(0.35 0.03 285 / 18%);
+}
+
+@layer base {
+  body {
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+}
+/* ---------- Theme switch animation ---------- */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2147483646;
+}
+
+/* Fallback for browsers without View Transitions (Firefox): smooth melt */
+html[data-switching],
+html[data-switching] * {
+  transition:
+    background-color 0.6s ease,
+    color 0.6s ease,
+    border-color 0.6s ease,
+    box-shadow 0.6s ease !important;
 }

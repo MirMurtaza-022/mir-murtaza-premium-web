@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Github, Instagram, Linkedin } from "lucide-react";
+import { Github, Instagram, Linkedin, Moon, Sun } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { Link } from "@tanstack/react-router";
 
-const links: Array<{ label: string; to: "/" | "/about" | "/projects" | "/process"; hash?: string }> = [
+const links: Array<{
+  label: string;
+  to: "/" | "/about" | "/projects" | "/process" | "/services";
+  hash?: string;
+}> = [
   { label: "Home", to: "/", hash: "top" },
   { label: "About", to: "/about" },
   { label: "Projects", to: "/projects" },
@@ -12,12 +16,115 @@ const links: Array<{ label: string; to: "/" | "/about" | "/projects" | "/process
   { label: "Services", to: "/services" },
 ];
 
-// ⬇️⬇️ REPLACE THESE WITH YOUR REAL PROFILE LINKS ⬇️⬇️
 const socials = [
   { label: "GitHub", href: "https://github.com/MirMurtaza-022", Icon: Github },
   { label: "Instagram", href: "https://www.instagram.com/mirmurtaza072", Icon: Instagram },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/mir-murtaza-7148b3404", Icon: Linkedin },
 ];
+
+
+
+/* ---------------- Theme toggle ---------------- */
+
+
+type Theme = "dark" | "light";
+
+function ThemeToggle() {
+  const [theme, setTheme] = useState<Theme>("dark");
+  const btnRef = useRef<HTMLButtonElement>(null);
+
+  // Read what the no-flash script already applied to <html>
+  useEffect(() => {
+    const current =
+      document.documentElement.dataset.theme === "light" ? "light" : "dark";
+    setTheme(current);
+  }, []);
+
+  function applyTheme(next: Theme) {
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem("theme", next);
+    } catch {
+      /* private mode — non-fatal */
+    }
+  }
+
+  function toggle() {
+    const next: Theme = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+
+    const root = document.documentElement;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const doc = document as unknown as {
+      startViewTransition?: (cb: () => void) => { ready: Promise<void> };
+    };
+
+    if (typeof doc.startViewTransition !== "function" || reduce) {
+      root.setAttribute("data-switching", "");
+      applyTheme(next);
+      window.setTimeout(() => root.removeAttribute("data-switching"), 650);
+      return;
+    }
+
+    const rect = btnRef.current?.getBoundingClientRect();
+    const x = rect ? rect.left + rect.width / 2 : window.innerWidth / 2;
+    const y = rect ? rect.top + rect.height / 2 : 40;
+
+    try {
+      const vt = doc.startViewTransition(() => applyTheme(next))!;
+      vt.ready
+        .then(() => {
+          const radius = Math.hypot(
+            Math.max(x, window.innerWidth - x),
+            Math.max(y, window.innerHeight - y)
+          );
+          root.animate(
+            {
+              clipPath: [
+                `circle(0px at ${x}px ${y}px)`,
+                `circle(${radius}px at ${x}px ${y}px)`,
+              ],
+            },
+            {
+              duration: 700,
+              easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+              pseudoElement: "::view-transition-new(root)",
+            }
+          );
+        })
+        .catch(() => {});
+    } catch {
+      applyTheme(next);
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      ref={btnRef}
+      onClick={toggle}
+      data-hover
+      aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-surface-strong text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:text-foreground"
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={theme}
+          initial={{ y: -10, opacity: 0, rotate: -45 }}
+          animate={{ y: 0, opacity: 1, rotate: 0 }}
+          exit={{ y: 10, opacity: 0, rotate: 45 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="flex"
+        >
+          {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+        </motion.span>
+      </AnimatePresence>
+    </button>
+  );
+}
+
+
+/* ---------------- Nav ---------------- */
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -30,13 +137,12 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock scroll while the mobile menu is open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open ]);
+  }, [open]);
 
   return (
     <motion.header
@@ -52,7 +158,7 @@ export function Nav() {
           }`}
         >
           {/* Logo + Brand */}
-          <Link to="/" className="flex min-w-0 shrink items-center gap-2 sm:gap-3">
+          <Link to="/" data-hover className="flex min-w-0 shrink items-center gap-2 sm:gap-3">
             <img
               src={logo}
               alt="MIR MURTAZA Logo"
@@ -67,9 +173,10 @@ export function Nav() {
           <nav className="hidden items-center gap-8 md:flex">
             {links.map((link) => (
               <Link
-                key={link.hash}
+                key={link.label}
                 to={link.to}
                 hash={link.hash}
+                data-hover
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 {link.label}
@@ -77,37 +184,45 @@ export function Nav() {
             ))}
           </nav>
 
-          {/* Desktop CTA (hidden on mobile) */}
-          <Link
-            to="/start-a-project"
-            className="hidden shrink-0 rounded-full border border-border bg-surface-strong px-5 py-2 text-sm font-medium whitespace-nowrap transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 md:block"
-          >
-            Start a project
-          </Link>
+          {/* Desktop: theme toggle + CTA */}
+          <div className="hidden shrink-0 items-center gap-2.5 md:flex">
+            <ThemeToggle />
+            <Link
+              to="/"
+              hash="contact"
+              data-hover
+              className="rounded-full border border-border bg-surface-strong px-5 py-2 text-sm font-medium whitespace-nowrap transition-all duration-300 hover:border-primary/50 hover:bg-primary/10"
+            >
+              Start a project
+            </Link>
+          </div>
 
-          {/* Hamburger (mobile only) */}
-          <button
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            className="flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-[5px] rounded-full border border-border bg-surface-strong md:hidden"
-          >
-            <motion.span
-              animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.25 }}
-              className="block h-[2px] w-5 rounded-full bg-foreground"
-            />
-            <motion.span
-              animate={open ? { opacity: 0 } : { opacity: 1 }}
-              transition={{ duration: 0.2 }}
-              className="block h-[2px] w-5 rounded-full bg-foreground"
-            />
-            <motion.span
-              animate={open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.25 }}
-              className="block h-[2px] w-5 rounded-full bg-foreground"
-            />
-          </button>
+          {/* Mobile: theme toggle + hamburger */}
+          <div className="flex items-center gap-2.5 md:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setOpen((v) => !v)}
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              className="flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-[5px] rounded-full border border-border bg-surface-strong"
+            >
+              <motion.span
+                animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.25 }}
+                className="block h-[2px] w-5 rounded-full bg-foreground"
+              />
+              <motion.span
+                animate={open ? { opacity: 0 } : { opacity: 1 }}
+                transition={{ duration: 0.2 }}
+                className="block h-[2px] w-5 rounded-full bg-foreground"
+              />
+              <motion.span
+                animate={open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.25 }}
+                className="block h-[2px] w-5 rounded-full bg-foreground"
+              />
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu panel */}
@@ -123,7 +238,7 @@ export function Nav() {
             >
               {links.map((link, i) => (
                 <motion.div
-                  key={link.hash}
+                  key={link.label}
                   initial={{ opacity: 0, x: -14 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 + i * 0.05, duration: 0.3 }}
@@ -142,7 +257,8 @@ export function Nav() {
 
               <div className="mt-2 border-t border-hairline p-2">
                 <Link
-                  to={"/start-a-project"}
+                  to="/"
+                  hash="contact"
                   onClick={() => setOpen(false)}
                   className="glow-soft mb-3 flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-primary-foreground"
                   style={{ background: "var(--gradient-accent)" }}

@@ -116,8 +116,9 @@ function ServicesPage() {
             What I can <span className="text-gradient">build</span> for you
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-muted-foreground sm:text-lg">
-            Six ways to get a website that actually works for your business —
+            Six ways to get a website that actually works for your business 
             from a single landing page to ongoing care after launch.
+            The Website can take more time accourding to the requirements.
           </p>
         </Reveal>
 
