@@ -4,10 +4,10 @@ import {
   ArrowRight, Briefcase, Check, Clock, LayoutGrid, MousePointerClick,
   PenTool, Plus, RefreshCcw, ShieldCheck,
 } from "lucide-react";
-import { Reveal, SectionHeading } from "@/components/site/motion-primitives";
+import { Reveal, SectionHeading } from "@/components/site/motion-primitives"
 
 export const Route = createFileRoute("/services")({
-  head: () => ({ meta: [{ title: "Services — Mir Murtaza" }] }),
+  head: () => ({ meta: [{ title: "Services — Mir Murtaza"}] }),
   component: ServicesPage,
 });
 

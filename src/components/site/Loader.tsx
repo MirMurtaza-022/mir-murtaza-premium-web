@@ -30,7 +30,7 @@ export function Loader({ onDone }: { onDone: () => void }) {
   }, [onDone, reduce]);
 
   return (
-    <motion.div className="fixed inset-0 z-[100] overflow-hidden" role="status" aria-label="Loading portfolio">
+    <motion.div className="fixed inset-0 z-[100] cursor-none overflow-hidden" role="status" aria-label="Loading portfolio">
       {/* Accent curtain — sweeps up second (the reveal "flush") */}
       <motion.div
         className="absolute inset-0 z-10"
@@ -82,12 +82,12 @@ export function Loader({ onDone }: { onDone: () => void }) {
         ))}
 
         {/* ---------- Center stage ---------- */}
-        <div className="relative flex h-72 w-72 items-center justify-center sm:h-80 sm:w-80">
+        <div className="relative flex h-72 w-72 items-center justify-center sm:h-80 sm:w-80 lg:h-96 lg:w-96">
 
           {/* Logo halo */}
           <motion.div
             aria-hidden
-            className="absolute h-40 w-40 rounded-full blur-[60px] sm:h-48 sm:w-48"
+            className="absolute h-40 w-40 rounded-full blur-[60px] sm:h-48 sm:w-48 lg:h-56 lg:w-56"
             style={{ background: "var(--gradient-accent)" }}
             initial={{ opacity: 0, scale: 0.75 }}
             animate={{ opacity: 0.4, scale: 1 }}
@@ -145,19 +145,7 @@ export function Loader({ onDone }: { onDone: () => void }) {
             <span className="absolute top-1/2 left-1/2 size-1 translate-x-19 -translate-y-1/2 bg-white/30" />
           </motion.div>
 
-          {/* Cursor gliding in to "place" a corner node */}
-          <motion.svg
-            aria-hidden
-            viewBox="0 0 20 20"
-            className="absolute z-20 h-3.5 w-3.5 text-white/85"
-            fill="currentColor"
-            initial={{ x: 200, y: 190, opacity: 0 }}
-            animate={{ x: [200, 92, 92], y: [190, 74, 74], opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 1.9, delay: 1.6, times: [0, 0.55, 0.8, 1], ease: "easeInOut" }}
-          >
-            <path d="M3 2 L3 16 L7 12 L10 18 L12 17 L9 11 L14 11 Z" />
-          </motion.svg>
-          {/* Click pulse where it lands */}
+          {/* Click pulse */}
           <motion.span
             aria-hidden
             className="absolute z-10 left-[6.2rem] top-[5rem] size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border"
@@ -177,7 +165,7 @@ export function Loader({ onDone }: { onDone: () => void }) {
             <motion.img
               src={logo}
               alt="Mir Murtaza logo"
-              className="h-24 w-24 rounded-full sm:h-28 sm:w-28"
+              className="h-32 w-32 rounded-full sm:h-44 sm:w-44 lg:h-52 lg:w-52"
               animate={{ scale: [1, 1.015, 1] }}
               transition={{ duration: 3, delay: 2, repeat: Infinity, ease: "easeInOut" }}
             />
@@ -198,7 +186,7 @@ export function Loader({ onDone }: { onDone: () => void }) {
 
         {/* Signature caption — appears, holds, dissolves */}
         <motion.div
-          className="absolute mt-72 flex flex-col items-center gap-1.5 text-center sm:mt-80"
+          className="absolute mt-72 flex flex-col items-center gap-1.5 text-center sm:mt-80 lg:mt-96"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: [0, 1, 1, 0], y: [10, 0, 0, -6] }}
           transition={{ duration: 2, delay: 1.65, times: [0, 0.25, 0.8, 1], ease: "easeInOut" }}

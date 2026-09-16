@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { Github, Instagram, Linkedin, Moon, Sun } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { Link } from "@tanstack/react-router";
+import { VisitorCounter } from "@/components/site/VisitorCounter";
 
 const links: Array<{
   label: string;
@@ -184,8 +185,9 @@ export function Nav() {
             ))}
           </nav>
 
-          {/* Desktop: theme toggle + CTA */}
+          {/* Desktop: visitor count + theme toggle + CTA */}
           <div className="hidden shrink-0 items-center gap-2.5 md:flex">
+            <VisitorCounter />
             <ThemeToggle />
             <Link
               to="/"
@@ -265,6 +267,10 @@ export function Nav() {
                 >
                   Start a project
                 </Link>
+                {/* Mobile: visitor count (only visible to you until 1K) */}
+                <div className="flex justify-center pb-3">
+                  <VisitorCounter />
+                </div>
                 <div className="flex items-center justify-center gap-3 pb-1">
                   {socials.map(({ label, href, Icon }) => (
                     <a
@@ -285,5 +291,6 @@ export function Nav() {
         </AnimatePresence>
       </div>
     </motion.header>
+    
   );
 }
