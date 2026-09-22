@@ -190,8 +190,8 @@ export function Nav() {
             <VisitorCounter />
             <ThemeToggle />
             <Link
-              to="/"
-              hash="contact"
+              to="/start-a-project"
+              hash=""
               data-hover
               className="rounded-full border border-border bg-surface-strong px-5 py-2 text-sm font-medium whitespace-nowrap transition-all duration-300 hover:border-primary/50 hover:bg-primary/10"
             >
@@ -259,8 +259,8 @@ export function Nav() {
 
               <div className="mt-2 border-t border-hairline p-2">
                 <Link
-                  to="/"
-                  hash="contact"
+                  to="/start-a-project"
+                  hash=""
                   onClick={() => setOpen(false)}
                   className="glow-soft mb-3 flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-primary-foreground"
                   style={{ background: "var(--gradient-accent)" }}
